@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>San Valentino</title>
+  <style>
+    /* Stile generale della pagina */
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #FFC0CB, #ff8dc6);
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+    }
+    /* Contenitore centrale */
+    #container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* Stile della busta */
+    .envelope {
+      width: 800px;
+      height: 500px;
+      background: #fff;
+      border: 2px solid #ddd;
+      position: relative;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.5s;
+      overflow: hidden;
+    }
+    /* Quando la busta è aperta, viene leggermente sollevata */
+    .envelope.open {
+      transform: translateY(-50px);
+    }
+    /* Il battente superiore della busta */
+    .flap {
+      width: 100%;
+      height: 50%;
+      background: #fff;
+      border-bottom: 2px solid #ddd;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: top;
+      transition: transform 0.7s;
+      z-index: 2;
+    }
+    /* Animazione del battente quando si apre */
+    .envelope.open .flap {
+      transform: rotateX(180deg);
+    }
+    /* La lettera interna */
+    .letter {
+      width: 90%;
+      height: 90%;
+      background: #fdfbe8;
+      position: absolute;
+      bottom: -100%;
+      left: 5%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: bottom 0.7s;
+      overflow: auto;
+      z-index: 1;
+    }
+    /* Quando la busta si apre, la lettera compare */
+    .envelope.open .letter {
+      bottom: 10px;
+    }
+    /* Stile per l'area di testo all'interno della lettera */
+    .letter textarea {
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+      resize: none;
+      background: transparent;
+      font-size: 16px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    /* Cuoricini animati per lo sfondo */
+    .heart {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: #db4992;
+      transform: rotate(45deg);
+      animation: float 5s infinite;
+      opacity: 0.8;
+    }
+    .heart:before,
+    .heart:after {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: #db4992;
+      border-radius: 50%;
+    }
+    .heart:before {
+      top: -15px;
+      left: 0;
+    }
+    .heart:after {
+      left: 15px;
+      top: 0;
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(315deg);
+        opacity: 0.5;
+      }
+      20% {
+        transform: translateY(-900px) rotate(-420deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(0) rotate(675deg);
+        opacity: 0.5;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <!-- Busta interattiva -->
+     <h2 style="color: #ffff;">clicca→</h2>
+    <div class="envelope" id="envelope">
+    
+      <div class="flap"></div>
+      <div class="letter">
+         <p>non è molto ma spero ti piaccia..♡</p>
+        <img src="./img/US.png" style="width: 700px; height: 400px;">
+      </div>
+    </div>
+    <!-- Cuoricini animati in vari punti dello schermo -->
+    <div class="heart" style="top: 150%; left: 5%; animation-duration: 20s;"></div>
+    <div class="heart" style="top: 125%; left: 25%; animation-duration: 25s;"></div>
+    <div class="heart" style="top: 101%; left: 10%; animation-duration: 19s;"></div>
+    <div class="heart" style="top: 110%; left: 15%; animation-duration: 23s;"></div>
+    <div class="heart" style="top: 120%; left: 80%; animation-duration: 27s;"></div>
+    <div class="heart" style="top: 113%; left: 30%; animation-duration: 30s;"></div>
+    <div class="heart" style="top: 105%; left: 60%; animation-duration: 21s;"></div>
+    <div class="heart" style="top: 104%; left: 50%; animation-duration: 26s;"></div>
+    <div class="heart" style="top: 110%; left: 90%; animation-duration: 29s;"></div>
+    <div class="heart" style="top: 123%; left: 75%; animation-duration: 20s;"></div>
+  </div>
+  
+  <script>
+    // Gestisce il click sulla busta per aprirla e far comparire la lettera
+    document.getElementById('envelope').addEventListener('click', function() {
+      this.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
